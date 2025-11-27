@@ -9,6 +9,10 @@ import androidx.activity.viewModels
 import androidx.compose.material3.Surface
 import com.tecsup.tecunify_movil.feature.auth.AuthViewModel
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
@@ -27,7 +31,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            TecUnifyTheme {
+
+            var isDarkMode by rememberSaveable { mutableStateOf(false) }
+
+            TecUnifyTheme(darkTheme = isDarkMode){
                 val navController = rememberNavController()
                 val context = LocalContext.current
 
@@ -71,11 +78,13 @@ class MainActivity : ComponentActivity() {
                     TecUnifyNavGraph(
                         navController = navController,
                         authViewModel = authViewModel,
-                        // 👇 AQUÍ sí lanzamos el intent de Google
+                        //  AQUÍ se lanza el intent de Google
                         onGoogleSignInClick = {
                             authViewModel.onGoogleSignInClick() // pone Loading
                             launcher.launch(googleSignInClient.signInIntent)
-                        }
+                        },
+                        isDarkMode = isDarkMode,
+                        onToggleDarkMode = {isDarkMode = it}
                     )
                 }
             }

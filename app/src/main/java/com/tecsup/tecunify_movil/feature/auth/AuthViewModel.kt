@@ -37,6 +37,11 @@ class AuthViewModel(
         _authState.value = AuthUiState.Loading
     }
 
+    fun signOut() {
+        auth.signOut()
+        _authState.value = AuthUiState.Idle
+    }
+
     /**
      * Llamar desde el resultado del intent de Google.
      */

@@ -9,7 +9,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.tecsup.tecunify_movil.feature.auth.AuthViewModel
 import com.tecsup.tecunify_movil.feature.auth.LoginScreen
-import com.tecsup.tecunify_movil.feature.home.HomeScreen
 import com.tecsup.tecunify_movil.feature.profile.ProfileScreen
 import com.tecsup.tecunify_movil.feature.splash.SplashScreen
 import kotlinx.coroutines.delay
@@ -26,7 +25,9 @@ sealed class Screen(val route: String) {
 fun TecUnifyNavGraph(
     navController: NavHostController,
     authViewModel: AuthViewModel,
-    onGoogleSignInClick: () -> Unit
+    onGoogleSignInClick: () -> Unit,
+    isDarkMode: Boolean,
+    onToggleDarkMode: (Boolean) -> Unit
 ) {
     val authState by authViewModel.authState.collectAsState()
 
@@ -72,12 +73,7 @@ fun TecUnifyNavGraph(
         //     HOME
         // -------------------
         composable(Screen.Home.route) {
-            HomeScreen(
-                user = authViewModel.currentUser,
-                onProfileClick = {
-                    navController.navigate(Screen.Profile.route)
-                }
-            )
+            MainScreen(rootNavController = navController)
         }
 
         // -------------------
@@ -86,9 +82,17 @@ fun TecUnifyNavGraph(
         composable(Screen.Profile.route) {
             ProfileScreen(
                 user = authViewModel.currentUser,
+                isDarkMode = isDarkMode,
                 onBack = {
                     navController.popBackStack()
-                }
+                },
+                onLogout = {
+                    authViewModel.signOut()
+                    navController.navigate(Screen.Login.route){
+                        popUpTo(Screen.Home.route){inclusive = true}
+                    }
+                },
+                onToggleDarkMode = onToggleDarkMode
             )
         }
     }
