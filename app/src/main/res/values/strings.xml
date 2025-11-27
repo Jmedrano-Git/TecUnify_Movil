@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TecUnify_Movil</string>
+
+    <string name="default_web_client_id">
+    685175434658-ml44osvcnscuo0avjjnscqqvhjbknpck.apps.googleusercontent.com
+    </string>
+
 </resources>

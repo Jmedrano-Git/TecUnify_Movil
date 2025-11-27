@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "685175434658",
+    "project_id": "tecunify-68452",
+    "storage_bucket": "tecunify-68452.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685175434658:android:1ae5c478fcde06fb1c96fb",
+        "android_client_info": {
+          "package_name": "com.tecsup.tecunify_movil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685175434658-ml44osvcnscuo0avjjnscqqvhjbknpck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP_g4YtQ3_l8ULbTBU6XTq_1ElyEqpFOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685175434658-ml44osvcnscuo0avjjnscqqvhjbknpck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
