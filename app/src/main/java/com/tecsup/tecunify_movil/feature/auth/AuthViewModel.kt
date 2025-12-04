@@ -29,10 +29,6 @@ class AuthViewModel(
 
     fun isLoggedIn(): Boolean = currentUser != null
 
-    /**
-     * En Compose, este método solo cambia el estado a Loading.
-     * El Activity/Composable se encarga de lanzar el intent de Google.
-     */
     fun onGoogleSignInClick() {
         _authState.value = AuthUiState.Loading
     }
@@ -42,9 +38,6 @@ class AuthViewModel(
         _authState.value = AuthUiState.Idle
     }
 
-    /**
-     * Llamar desde el resultado del intent de Google.
-     */
     fun handleGoogleSignInResult(
         account: GoogleSignInAccount?,
         onSuccess: () -> Unit,

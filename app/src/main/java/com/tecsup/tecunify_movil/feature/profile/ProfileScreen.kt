@@ -1,6 +1,5 @@
 package com.tecsup.tecunify_movil.feature.profile
 
-import androidx.benchmark.traceprocessor.Row
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
